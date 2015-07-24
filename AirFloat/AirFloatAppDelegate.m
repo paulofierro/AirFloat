@@ -56,7 +56,8 @@
 #if TARGET_IPHONE_SIMULATOR
     NSString* path = [[NSString stringWithFormat:@"/Users/%@/Library/Preferences/", NSUserName()] stringByAppendingPathComponent:filename];
 #else
-    NSString* path = [@"/var/mobile/Library/Preferences/" stringByAppendingPathComponent:filename];
+    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSString *path          = [documentsPath stringByAppendingPathComponent:filename];
 #endif
     
     return path;
